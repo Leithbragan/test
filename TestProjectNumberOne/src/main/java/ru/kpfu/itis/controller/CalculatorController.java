@@ -31,9 +31,7 @@ public class CalculatorController {
         Operation operation = new Operation();
         model.addAttribute("operation", operation);
         model.addAttribute("nameOperation", operation.getNameOperation());
-        if (operationService.makeOperation(operation) != null) {
-            model.addAttribute("total", operationService.makeOperation(operation));
-        }
+        model.addAttribute("total", operation.getTotal());
         return "play";
     }
 
@@ -46,7 +44,7 @@ public class CalculatorController {
             operationService.addOperation(operation);
             System.out.println(operationService.makeOperation(operation).getTotal());
 
-            return "redirect:/calculator/play";
+            return "play";
         }
     }
 

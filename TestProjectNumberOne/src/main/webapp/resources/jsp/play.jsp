@@ -18,6 +18,9 @@
             background: blanchedalmond;
         }
 
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -28,18 +31,20 @@
     <h1>Калькулятор</h1>
     <sf:form action="/calculator/play_operation" method="post" modelAttribute="operation">
         <div class="form-group">
-            <sf:label path="arg_1">Аргумент 1 </sf:label> <sf:input path="arg_1"/> <sf:errors path="arg_1"/> <br>
-            <sf:label path="arg_2">Аргумент 2 </sf:label> <sf:input path="arg_2"/> <sf:errors path="arg_2"/><br>
-        </div>
-        <div class="btns_position">
+            <sf:label path="arg_1">Аргумент 1 </sf:label>
+            <sf:input path="arg_1"/> <br>
+            <sf:errors path="arg_1" cssClass="error"/> <br>
+            <sf:label path="arg_2">Аргумент 2 </sf:label> <sf:input path="arg_2"/> <br>
+            <sf:errors path="arg_2" cssClass="error"/><br>
             <sf:button class="btn btn-success" name="nameOperation" value="sum">&#43</sf:button>
             <sf:button class="btn btn-success" name="nameOperation" value="minus">&#8211</sf:button>
             <sf:button class="btn btn-success" name="nameOperation" value="multiplication">&#215</sf:button>
             <sf:button class="btn btn-success" name="nameOperation" value="division">&#247</sf:button>
             <sf:button class="btn btn-success" name="nameOperation" value="total">=</sf:button>
         </div>
+        ${operation.total}
     </sf:form>
-    ${total}
+
 </div>
 </body>
 </html>

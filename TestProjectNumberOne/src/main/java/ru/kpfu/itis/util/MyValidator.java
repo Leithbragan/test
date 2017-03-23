@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class MyValidator implements Validator {
 
-    static Pattern p = Pattern.compile("\\d+");
+    static Pattern p = Pattern.compile("\\d+|^$");
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -20,11 +20,11 @@ public class MyValidator implements Validator {
         Operation operation = (Operation) o;
 
         if (operation.getArg_1() == null || operation.getArg_1().isEmpty()) {
-            errors.rejectValue("arg_1", "", "Имя не может быть пустым");
+            errors.rejectValue("arg_1", "", "Поле не может быть пустым");
         }
 
         if (operation.getArg_2() == null || operation.getArg_2().isEmpty()) {
-            errors.rejectValue("arg_2", "", "Имя не может быть пустым");
+            errors.rejectValue("arg_2", "", "Поле не может быть пустым");
         }
 
         if (operation.getNameOperation().equals("division") && operation.getArg_2().equals("0")) {
@@ -35,10 +35,10 @@ public class MyValidator implements Validator {
         Matcher matcher_arg_2 = p.matcher(operation.getArg_2());
 
         if (!matcher_arg_1.matches()) {
-            errors.rejectValue("arg_1", "", "Тут можно только цифру");
+            errors.rejectValue("arg_1", "", "Тут можно вводить только цифру");
         }
         if (!matcher_arg_2.matches()) {
-            errors.rejectValue("arg_2", "", "Тут можно только цифру");
+            errors.rejectValue("arg_2", "", "Тут можно вводить только цифру");
         }
     }
 }
